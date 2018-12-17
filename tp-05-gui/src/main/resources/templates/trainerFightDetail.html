@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+{{> layout/header}}
+<body>
+
+{{> layout/navbar}}
+
+{{#fight}}
+<div class="container">
+    <h2 class="pt-md-5 pb-md-5">  Trainer : <span id="trainerName">{{name}}</span></h2>
+
+    <h4>Fight # {{id}}</h4>
+
+    <table class="table table-sm">
+        <thead>
+        <th scope="col">#</th>
+        <th scope="col">Details</th>
+        </thead>
+
+        <tbody>
+        {{#logsS}}
+            <tr>
+                <td class="round">
+                </td>
+                <td class="details">
+                    {{ . }}
+                </td>
+            </tr>
+        {{/logsS}}
+        </tbody>
+
+
+    </table>
+
+    {{fight.logs}}
+
+
+</div>
+{{/fight}}
+</body>
+
+<script>
+    window.onload = function() {
+        var round = document.getElementsByClassName("round");
+        for (var i = 0; i < round.length; i++) {
+            round[i].innerHTML = i + 1;
+        }
+
+        var trainerName = document.getElementById("trainerName").innerText;
+
+        var details = document.getElementsByClassName("details");
+        for(var i = 0; i < details.length; i++)
+        {
+            if(details[i].innerHTML.includes("KO"))
+            {
+                var pokemonName = details[i].innerHTML.trim().split(" ")[0];
+                details[i].innerHTML = details[i].innerHTML + "<span class=\"badge badge-warning\">" + pokemonName + " KO ! </span>";
+            }
+        }
+
+        if(details[details.length-1].innerHTML.includes(trainerName))
+        {
+            details[details.length-1].innerHTML = details[details.length-1].innerHTML + "<span class=\"badge badge-success\">Fight Win !</span>"
+        }
+        else{
+            details[details.length-1].innerHTML = details[details.length-1].innerHTML + "<span class=\"badge badge-danger\">Fight Lost !</span>"
+
+        }
+    }
+</script>
+</html>

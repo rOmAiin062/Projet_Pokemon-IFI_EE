@@ -1,0 +1,27 @@
+http://localhost:9500/ - TP05 GUI
+
+http://localhost:9500/ - Home
+http://localhost:9500/trainers - List of trainers
+http://localhost:9500/pokemons - List of pokemons
+http://localhost:9500/pokeboutique - Pokeboutique
+
+http://localhost:9500/trainers/NOM_DU_TRAINER - Show details of NOM_DU_TRAINER
+http://localhost:9500/trainers/NOM_DU_TRAINER/fights - Show fight of NOM_DU_TRAINER
+http://localhost:9500/trainers/NOM_DU_TRAINER/fights/ID_FIGHT - Show details of fights ID_FIGHT
+http://localhost:9500/trainers/NOM_DU_TRAINER/arena - Visit arena to start fight
+http://localhost:9500/trainers/NOM_DU_TRAINER/fight/NOM_TRAINER2 - Start fight between NOM_DU_TRAINER vs NOM_TRAINER2
+
+
+
+http://127.0.0.1:8082/fight - TPA FIGHT
+
+http://127.0.0.1:8082/fight/ - All Fight
+http://127.0.0.1:8082/fight/NOM_DU_TRAINER - Fight for NOM_DU_TRAINER
+http://127.0.0.1:8082/fight/NOM_TRAINER1/NOM_TRAINER2 - runFight
+
+
+
+http://localhost:8081/trainers - Trainer API (inventory + wallet added)
+
+http://localhost:8081/trainers/ - All Trainers
+http://localhost:8081/trainers/NOM_DU_TRAINER - Trainer NOM_Du_TRAINER

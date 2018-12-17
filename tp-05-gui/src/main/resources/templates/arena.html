@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+{{> layout/header}}
+<body>
+
+{{> layout/navbar}}
+{{#trainers}}
+<br/>
+<div class="container">
+    <div class="card-deck">
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-3">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{name}}</h4>
+                </div>
+                <img class="card-img-top" src="{{picture}}" alt="profilePicture">
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        <span><a target="_blank" href="fight/{{name}}">FIGHT ! </a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+{{/trainers}}
+
+</body>
+</html>

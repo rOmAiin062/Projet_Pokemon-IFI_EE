@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+{{> layout/header}}
+<body>
+
+{{> layout/navbar}}
+
+<div class="container">
+
+
+    {{#login}}
+        <h4>
+            Welcome stranger. Please select your account to continue.
+        </h4>
+    <form>
+        <div class="form-group">
+            <label for="trainersName">Select your account</label>
+            <select class="form-control" id="trainersName">
+                {{#trainers}}
+                    <option value="{{name}}">{{name}}</option>
+                {{/trainers}}
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="selectAccount()">Select</button>
+    </form>
+    {{/login}}
+
+    {{#trainer}}
+    <h4> Welcome <span id="trainerName">{{trainer.name}}</span> </h4>
+    <p>You have <span id="trainerWallet">{{trainer.wallet}}</span> pokédollar in your wallet.<br/>
+        Take your time to choose what you want. Call me if you need help ! :-)</p>
+
+    <div class="card-deck">
+        {{#products_set}}
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-3">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{key.name}}</h4>
+                </div>
+                <div style="width:50px;margin:auto;" >
+                <img class="card-img-top" src="{{key.img}}" alt="{{key.name}}">
+                </div>
+                <div class="card-body">
+                    <span class="badge badge-primary">Available: {{value}}</span>
+                    <span class="badge badge-primary">Price: {{key.buying_price}}</span>
+
+                    {{#key.bonus_ball}}
+                        <span class="badge badge-primary">Bonus ball: {{key.bonus_ball}}</span>
+                    {{/key.bonus_ball}}
+
+                    {{#key.hp_restore}}
+                        <span class="badge badge-primary">HP restore: {{key.hp_restore}}</span>
+                    {{/key.hp_restore}}
+                </div>
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary" onclick="buyProduct('{{key.name}}', {{key.buying_price}}, {{value}})">Buy this product</button>
+                </div>
+            </div>
+        </div>
+        {{/products_set}}
+    </div>
+
+    {{/trainer}}
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+
+    function selectAccount()
+    {
+        var password = prompt("Please enter your password", "");
+        var trainerName = document.getElementById("trainersName").value;
+        window.open("/pokeboutique/" + trainerName, "_self");
+    }
+
+    function buyProduct(product_name, buying_price, value)
+    {
+        var trainerName = document.getElementById("trainerName").innerText;
+        window.open("/pokeboutique/" + trainerName + "/" + product_name.replace(/\s/g, '') , "_self");
+    }
+
+</script>
+</body>
+</html>
